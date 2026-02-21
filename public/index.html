@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,20 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header>
         <h1>Gift Tracker</h1>
     </header>
 
     <main class="container">
+        <!-- Tab for mobile to show people list again -->
+        <button id="btn-show-people" class="tab-button hidden" title="Show People List">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18l6-6-6-6" />
+            </svg>
+        </button>
+
         <!-- People Section -->
         <section id="people-section" class="panel">
             <div class="panel-header">
@@ -27,16 +36,30 @@
         <!-- Gifts Section (hidden initially) -->
         <section id="gifts-section" class="panel hidden">
             <div class="panel-header">
-                <h2><span id="current-person-name">Select a Person</span>'s Gifts</h2>
-                <div class="actions">
-                    <button id="btn-edit-person" class="btn secondary">Edit Person</button>
-                    <button id="btn-add-gift" class="btn primary">+ Add Gift</button>
+                <div class="header-title-group">
+                    <h2><span id="current-person-name">Select a Person</span></h2>
+                    <button id="btn-edit-person" class="btn-icon-square" title="Edit Person">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 20h9"></path>
+                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                        </svg>
+                    </button>
                 </div>
             </div>
-            
+
             <div class="gifts-container">
                 <div class="gifts-unpurchased">
-                    <h3>Ideas</h3>
+                    <div class="section-title-group">
+                        <h3>Gift Ideas</h3>
+                        <button id="btn-add-gift" class="btn-icon-square primary" title="Add Gift">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                        </button>
+                    </div>
                     <ul id="unpurchased-list" class="draggable-list">
                         <!-- Unpurchased gifts injected here -->
                     </ul>
@@ -111,4 +134,5 @@
 
     <script src="app.js"></script>
 </body>
+
 </html>

@@ -13,6 +13,10 @@ const unpurchasedListEl = document.getElementById('unpurchased-list');
 const purchasedListEl = document.getElementById('purchased-list');
 const noGiftsMsg = document.getElementById('no-gifts-msg');
 
+const peopleSection = document.getElementById('people-section');
+const btnShowPeople = document.getElementById('btn-show-people');
+const btnBackPeople = document.getElementById('btn-back-people');
+
 // Modals
 const personModal = document.getElementById('person-modal');
 const personForm = document.getElementById('person-form');
@@ -88,6 +92,11 @@ async function selectPerson(id) {
 
     currentPersonNameEl.textContent = person.name;
     giftsSection.classList.remove('hidden');
+
+    // Collapse people section on mobile
+    peopleSection.classList.add('collapsed-mobile');
+    btnShowPeople.classList.remove('hidden');
+
     renderPeople(); // Update active class
 
     await loadGifts(id);
@@ -203,6 +212,21 @@ function setupEventListeners() {
     document.getElementById('btn-add-gift').addEventListener('click', () => {
         openGiftModal();
     });
+
+    // Mobile Navigation
+    if (btnShowPeople) {
+        btnShowPeople.addEventListener('click', () => {
+            peopleSection.classList.remove('collapsed-mobile');
+            btnShowPeople.classList.add('hidden');
+        });
+    }
+
+    if (btnBackPeople) {
+        btnBackPeople.addEventListener('click', () => {
+            peopleSection.classList.remove('collapsed-mobile');
+            btnShowPeople.classList.add('hidden');
+        });
+    }
 
     // Cancel buttons
     document.querySelectorAll('.btn-cancel').forEach(btn => {
