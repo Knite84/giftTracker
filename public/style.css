@@ -1,0 +1,337 @@
+:root {
+    --bg-color: #f4f4f9;
+    --panel-bg: #ffffff;
+    --text-color: #111111;
+    --text-muted: #666666;
+    --primary-color: #000000;
+    --primary-hover: #333333;
+    --secondary-bg: #e0e0e0;
+    --secondary-hover: #cccccc;
+    --danger-color: #ff4d4f;
+    --danger-hover: #ff7875;
+    --border-color: #eaeaea;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    --transition: all 0.2s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+header {
+    background-color: var(--panel-bg);
+    padding: 1rem 2rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.panel {
+    background-color: var(--panel-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 1.5rem;
+    flex: 1;
+}
+
+#people-section {
+    flex: 0 0 350px;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.panel-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+.btn.primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn.secondary {
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+}
+.btn.secondary:hover {
+    background-color: var(--secondary-hover);
+}
+
+.btn.delete {
+    background-color: transparent;
+    color: var(--danger-color);
+    border: 1px solid var(--danger-color);
+}
+.btn.delete:hover {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* Lists and Drag & Drop */
+ul.draggable-list {
+    list-style: none;
+    min-height: 50px;
+}
+
+.list-item {
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    margin-bottom: 0.5rem;
+    background-color: var(--panel-bg);
+    cursor: grab;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.2s;
+}
+
+.list-item:active {
+    cursor: grabbing;
+}
+
+.list-item.dragging {
+    opacity: 0.5;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.list-item.drag-over {
+    border-top: 2px solid var(--primary-color);
+}
+
+.person-item.active {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+.person-name {
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.gift-content {
+    flex-grow: 1;
+    pointer-events: none;
+    margin-right: 1rem;
+}
+
+.gift-desc {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.gift-link {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    pointer-events: auto;
+    word-break: break-all;
+}
+.gift-link:hover {
+    text-decoration: underline;
+    color: var(--primary-color);
+}
+
+.gift-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.gift-checkbox {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+.edit-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-decoration: underline;
+}
+.edit-btn:hover {
+    color: var(--primary-color);
+}
+
+.placeholder-msg {
+    color: var(--text-muted);
+    font-style: italic;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Accordion */
+details {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+summary {
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+}
+summary:hover {
+    color: var(--primary-color);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Modals */
+.modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--panel-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.modal-content h2 {
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+.form-group input[type="text"],
+.form-group input[type="url"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.checkbox-group label {
+    margin-bottom: 0;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.right-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+/* Toasts */
+#toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.toast {
+    background-color: var(--text-color);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: var(--transition);
+}
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.toast-error {
+    background-color: var(--danger-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    #people-section {
+        flex: none;
+        width: 100%;
+    }
+}

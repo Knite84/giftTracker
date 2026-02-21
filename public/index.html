@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Gift Tracker</h1>
+    </header>
+
+    <main class="container">
+        <!-- People Section -->
+        <section id="people-section" class="panel">
+            <div class="panel-header">
+                <h2>People</h2>
+                <button id="btn-add-person" class="btn primary">+ Add Person</button>
+            </div>
+            <ul id="people-list" class="draggable-list">
+                <!-- People items injected here -->
+            </ul>
+        </section>
+
+        <!-- Gifts Section (hidden initially) -->
+        <section id="gifts-section" class="panel hidden">
+            <div class="panel-header">
+                <h2><span id="current-person-name">Select a Person</span>'s Gifts</h2>
+                <div class="actions">
+                    <button id="btn-edit-person" class="btn secondary">Edit Person</button>
+                    <button id="btn-add-gift" class="btn primary">+ Add Gift</button>
+                </div>
+            </div>
+            
+            <div class="gifts-container">
+                <div class="gifts-unpurchased">
+                    <h3>Ideas</h3>
+                    <ul id="unpurchased-list" class="draggable-list">
+                        <!-- Unpurchased gifts injected here -->
+                    </ul>
+                    <p id="no-gifts-msg" class="placeholder-msg hidden">No gifts added yet.</p>
+                </div>
+
+                <div class="gifts-purchased">
+                    <details id="purchased-accordion">
+                        <summary>Purchased Gifts</summary>
+                        <ul id="purchased-list" class="draggable-list">
+                            <!-- Purchased gifts injected here -->
+                        </ul>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <!-- Person Modal -->
+    <div id="person-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="person-modal-title">Add Person</h2>
+            <form id="person-form">
+                <input type="hidden" id="person-id">
+                <div class="form-group">
+                    <label for="person-name">Name</label>
+                    <input type="text" id="person-name" maxlength="100" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn delete hidden" id="btn-delete-person">Delete</button>
+                    <div class="right-actions">
+                        <button type="button" class="btn secondary btn-cancel">Cancel</button>
+                        <button type="submit" class="btn primary">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Gift Modal -->
+    <div id="gift-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="gift-modal-title">Add Gift</h2>
+            <form id="gift-form">
+                <input type="hidden" id="gift-id">
+                <div class="form-group">
+                    <label for="gift-description">Description</label>
+                    <textarea id="gift-description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="gift-link">Link (optional)</label>
+                    <input type="url" id="gift-link" placeholder="https://...">
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="gift-purchased">
+                    <label for="gift-purchased">Purchased</label>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn delete hidden" id="btn-delete-gift">Delete</button>
+                    <div class="right-actions">
+                        <button type="button" class="btn secondary btn-cancel">Cancel</button>
+                        <button type="submit" class="btn primary">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
