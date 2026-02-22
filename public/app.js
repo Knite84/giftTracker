@@ -213,6 +213,34 @@ function setupEventListeners() {
         openGiftModal();
     });
 
+    // Share Gifts
+    document.getElementById('btn-share-gifts').addEventListener('click', async () => {
+        if (!currentPersonId) return;
+        const person = people.find(p => p.id === currentPersonId);
+        if (!person) return;
+
+        const unpurchased = currentGifts.filter(g => !g.purchased);
+        let text = `### ${person.name}'s Gift Ideas\n`;
+        if (unpurchased.length === 0) {
+            text += `- No gifts added yet.\n`;
+        } else {
+            unpurchased.forEach(g => {
+                if (g.link) {
+                    text += `- [${g.description}](${g.link})\n`;
+                } else {
+                    text += `- ${g.description}\n`;
+                }
+            });
+        }
+
+        try {
+            await navigator.clipboard.writeText(text);
+            showToast('Gift ideas copied to clipboard!');
+        } catch (err) {
+            showToast('Failed to copy to clipboard', true);
+        }
+    });
+
     // Mobile Navigation
     if (btnShowPeople) {
         btnShowPeople.addEventListener('click', () => {
