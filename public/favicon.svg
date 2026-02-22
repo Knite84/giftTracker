@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+    <!-- Light grey background, softly rounded -->
+    <rect width="64" height="64" rx="14" fill="#f4f4f9" />
+    
+    <!-- Medium grey present box -->
+    <rect x="16" y="28" width="32" height="24" rx="2" fill="#a0a0a0" />
+    
+    <!-- Slightly darker lid -->
+    <rect x="12" y="22" width="40" height="6" rx="1.5" fill="#888888" />
+    
+    <!-- Dark black ribbon vertical -->
+    <rect x="28" y="22" width="8" height="30" fill="#111111" />
+    
+    <!-- Dark black bow loops -->
+    <path d="M 32 22 C 22 10 12 20 28 22 Z" fill="#111111" />
+    <path d="M 32 22 C 42 10 52 20 36 22 Z" fill="#111111" />
+    
+    <!-- Center knot -->
+    <circle cx="32" cy="22" r="3" fill="#111111" />
+</svg>
